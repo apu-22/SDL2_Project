@@ -25,7 +25,18 @@ int main(int argc, char *argv[])
         420,
         SDL_WINDOW_OPENGL);
 
-    SDL_Delay(5000);
+    // creat infinity loop
+    bool gameIsRunning = true;
+    while (gameIsRunning)
+    {
+        SDL_Event event;
+        // start event loop
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+                gameIsRunning = false;
+        }
+    }
 
     SDL_DestroyWindow(window);
 

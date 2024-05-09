@@ -25,6 +25,16 @@ int main(int argc, char *argv[])
         420,
         SDL_WINDOW_OPENGL);
 
+// Create an SDL renderer for rendering graphics in the window
+    SDL_Renderer *renderer = NULL;
+
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    if (!renderer)
+    {
+        std::cout << "Error: Failed to create renderer: " << "SDL_GetError()";
+    }
+
     // creat infinity loop
     bool gameIsRunning = true;
     while (gameIsRunning)
@@ -36,6 +46,14 @@ int main(int argc, char *argv[])
             if (event.type == SDL_QUIT)
                 gameIsRunning = false;
         }
+
+         SDL_SetRenderDrawColor(renderer, 205, 20, 205, 255);
+
+        // Clear the renderer with the specified draw color
+        SDL_RenderClear(renderer);
+
+        // Present the renderer (draw the frame to the window)
+        SDL_RenderPresent(renderer);
     }
 
     SDL_DestroyWindow(window);

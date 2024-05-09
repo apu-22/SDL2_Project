@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include <SDL2/SDL.h>
 
 #define SCREEN_WIDTH 820
